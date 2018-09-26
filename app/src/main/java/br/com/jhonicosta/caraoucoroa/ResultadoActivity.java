@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 public class ResultadoActivity extends AppCompatActivity {
 
     private ImageView buttonVoltar;
@@ -19,6 +21,8 @@ public class ResultadoActivity extends AppCompatActivity {
         buttonVoltar = findViewById(R.id.buttonVoltar);
         imageResultado = findViewById(R.id.imageResultado);
 
+        jogada();
+
         buttonVoltar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -28,5 +32,15 @@ public class ResultadoActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void jogada(){
+        Random random = new Random();
+        boolean jogada = random.nextBoolean();
+        if(jogada){
+            imageResultado.setImageResource(R.drawable.moeda_cara);
+        }else{
+            imageResultado.setImageResource(R.drawable.moeda_coroa);
+        }
     }
 }
